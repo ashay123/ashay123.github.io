@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <style>
+    .menu {
+      padding-top: 50px;
+    }
+    .colors {
+        background-color: #cb3594;
+        border: none;
+        color: white;
+        padding: 10px;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        border-radius: 4px;
+  }
+  .colors2 { background-color: #986928;}
+  .colors3 { background-color: #ffcf33;}
+  .colors4 { background-color: #659b41;}
+  .tools { border: none;
+         cursor: pointer;
+         background-color: #00000;
+         font-family: "Comic Sans MS", cursive, sans-serif;
+  }
+  .size {
+      border: none;
+        cursor: pointer;
+        background-color: #00000;
+        font-family: "Comic Sans MS", cursive, sans-serif;
+  }
+  .drawing{
+      border: none;
+        cursor: pointer;
+        background-color: #00000;
+        font-family: "Comic Sans MS", cursive, sans-serif;
+  }
+  .leftdiv{
+    padding-left: 100px !important;
+  }
+  .card-body {
+    border-bottom: 1px solid rgba(0,0,0,.125);
+  }
+
+  </style>
+    <title>Let's draw!</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+  </head>
+  <body>
+  <div class="row">
+  <div class="col-3 leftdiv">
+    <div>
+      <button type="button" id="clear" class="btn btn-link">Opnieuw</button>
+    </div>
+  <div class="card border-primary mb-3" style="max-width: 20rem;">
+    <center>
+        <div class="card-header">Kleuren</div>
+        <div class="card-body">
+          <button class="colors" id="purple"></button>
+        <button class="colors colors2" id="brown"></button>
+        <button class="colors colors3" id="yellow"></button>
+        <button class="colors colors4" id="green"></button>
+        </div>
+        <div class="card-header">Tools</div>
+        <div class="card-body">
+          <div class="btn-group" role="group" aria-label="Basic example">
+            <button type="button" id="crayon" class="btn btn-secondary">Krijt</button>
+            <button type="button" id="marker" class="btn btn-secondary">Marker</button>
+            <button type="button" id="eraser" class="btn btn-secondary">Gum</button>
+        </div>
+        </div>
+        <div class="card-header">Formaat</div>
+        <div class="card-body">
+          <div class="btn-group" role="group" aria-label="Basic example">
+            <button type="button" id="small" class="btn btn-secondary">Klein</button>
+            <button type="button" id="normal" class="btn btn-secondary">Normaal</button>
+            <button type="button" id="large" class="btn btn-secondary">Groot</button>
+            <button type="button" id="huge" class="btn btn-secondary">Heel groot</button>
+        </div>
+        </div>
+        <div class="card-header">Andere kleurplaten</div>
+        <div class="card-body">
+        <div class="btn-group" role="group" aria-label="Basic example">
+            <button type="button" id="duck" class="btn btn-secondary">Eend</button>
+            <button type="button" id="dog" class="btn btn-secondary">Hond</button>
+      </div>
+      </center>
+  </div>
+  </div>
+    <div id="canvasDiv"></div>
+    <script type="text/javascript" src="colouring-js.js"></script>
+    <script type="text/javascript">
+    	 drawingApp.init();
+	</script>
+  </div>
+  </body>
+</html>
