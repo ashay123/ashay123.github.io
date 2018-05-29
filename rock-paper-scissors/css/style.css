@@ -1,0 +1,61 @@
+.header-wrapper {
+    min-height: 20vh;
+}
+
+.status-wrapper {
+    min-height: 5vh;
+}
+
+.card {
+    min-height: 75vh;
+    padding-top: 10%;
+    -webkit-transition: all 0.2s ease;
+    -moz-transition: all 0.2s ease;
+    -o-transition: all 0.2s ease;
+    transition: all 0.2s ease;
+}
+
+.card:hover {
+    box-shadow: rgba(0, 0, 0, 0.3) 0 16px 16px 0;
+    -webkit-box-shadow: rgba(0, 0, 0, 0.3) 0 16px 16px 0;
+    -moz-box-shadow: rgba(0, 0, 0, 0.3) 0 16px 16px 0;
+    cursor: pointer;
+}
+
+.img-wrapper {
+    padding: 0 20px;
+    height: 30vh;
+    width: 100%;
+}
+
+#overlay {
+    position: fixed; /* Sit on top of the page content */
+    width: 100%; /* Full width (cover the whole page) */
+    height: 100%; /* Full height (cover the whole page) */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
+    cursor: pointer; /* Add a pointer on hover */
+    -webkit-transition: all 0.2s ease;
+    -moz-transition: all 0.2s ease;
+    -o-transition: all 0.2s ease;
+    transition: all 0.2s ease;
+}
+
+#overlay-text {
+    font-size: 3em;
+}
+
+.bg-loss {
+    background-color: rgba(255, 0, 0, 0.8);
+}
+
+.bg-tie {
+    background-color: rgba(108, 117, 125, 0.8);
+}
+
+.bg-win {
+    background-color: rgba(0, 255, 0, 0.8);
+}
