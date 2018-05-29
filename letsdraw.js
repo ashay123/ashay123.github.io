@@ -97,6 +97,7 @@ function prepareCanvas()
 			addClick(e.pageX - this.offsetLeft, e.pageY - this.offsetTop);
 			redraw();
 		}
+		e.preventDefault();
 	});
 
 	// When the mouse button is not pressed anymore, we are not painting
