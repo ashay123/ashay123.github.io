@@ -1,0 +1,21 @@
+{
+  "name": "ir1",
+  "version": "1.0.0",
+  "description": "[![pipeline status](https://gitlab.ewi.tudelft.nl/TI2806/2017-2018/IR/ir1/ir1/badges/master/pipeline.svg)](https://gitlab.ewi.tudelft.nl/TI2806/2017-2018/IR/ir1/ir1/commits/master)",
+  "main": "index.js",
+  "directories": {
+    "doc": "doc"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@gitlab.ewi.tudelft.nl:TI2806/2017-2018/IR/ir1/ir1.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.3"
+  }
+}
