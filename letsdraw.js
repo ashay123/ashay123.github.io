@@ -1,3 +1,6 @@
+/*
+The variables which are used in this application
+*/
 var canvas;
 var context;
 var canvasWidth = 300;
@@ -37,6 +40,10 @@ var drawingAreaHeight = 200;
 var totalLoadResources = 1;
 var curLoadResNum = 0;
 var image = "images/watermelon-duck-outline.png";
+
+/*
+Function to check whether the total amount of resources are loaded
+*/
 function resourceLoaded()
 {
 	if(++curLoadResNum >= totalLoadResources){
@@ -44,6 +51,9 @@ function resourceLoaded()
 	}
 }
 
+/*
+Function to initialize the canvas and track mouse behaviour
+*/
 function prepareCanvas()
 {
 	var canvasDiv = document.getElementById('canvasDiv');
@@ -61,6 +71,7 @@ function prepareCanvas()
 	};
 	outlineImage.src = image;
 
+	// When one of the buttons is clicked change the variable to that specific one
 	$('#canvas').mousedown(function(e){
 		var mouseX = e.pageX - this.offsetLeft;
 		var mouseY = e.pageY - this.offsetTop;
@@ -80,6 +91,7 @@ function prepareCanvas()
 		redraw();
 	});
 
+	// When we are in paint modus, add a click
 	$('#canvas').mousemove(function(e){
 		if(paint){
 			addClick(e.pageX - this.offsetLeft, e.pageY - this.offsetTop);
@@ -87,16 +99,23 @@ function prepareCanvas()
 		}
 	});
 
+	// When the mouse button is not pressed anymore, we are not painting
 	$('#canvas').mouseup(function(e){
 		paint = false;
 		redraw();
 	});
 
+	// When the mouse leaves the canvas, not painting anymore
 	$('#canvas').mouseleave(function(e){
   		paint = false;
 	});
 }
 
+/*
+This functions is called to add a click
+The array of all the tools are updated with the specific 
+attributes of that click
+*/
 function addClick(x, y, dragging)
 {
   	clickX.push(x);
@@ -107,6 +126,9 @@ function addClick(x, y, dragging)
     clickSize.push(curSize);
 }
 
+/*
+Function to clear the canvas
+*/
 function clearCanvas()
 {
 	clickX.length = 0;
@@ -118,6 +140,9 @@ function clearCanvas()
     redraw();
 }
 
+/*
+Get the dog image to draw
+*/
 function dog() 
 {
 	if(outlineImage.src != "images/dog.jpg") {
@@ -126,6 +151,9 @@ function dog()
 	}
 }
 
+/*
+Get the duck image to draw
+*/
 function duck()
 {
 	if(outlineImage.src != "images/watermelon-duck-outline.png") {
@@ -134,6 +162,11 @@ function duck()
 	}
 }
 
+/*
+This function is called when a click is added. 
+The canvas is cleared and drawn again using the different arrays,
+now containing everything up to the last click
+*/
 function redraw(){
 	context.clearRect(0, 0, context.canvas.width, context.canvas.height); // Clears the canvas
   	for(var i=0; i < clickX.length; i++) {

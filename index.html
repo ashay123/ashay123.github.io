@@ -1,78 +1,75 @@
 <!DOCTYPE html>
 <html>
-  <head>
-  <meta name="viewport" content="width=1280, user-scalable=no" />
-  <style>
-  	/*.left {
-  		position: absolute;
-  		float: left;
-  		width: 25%;
-  	}*/
-  	.menu {
-  		padding-top: 50px;
-  	}
-  	.colors {
-  			background-color: #cb3594;
-	    	border: none;
-	    	color: white;
-	    	padding: 10px;
-	    	font-size: 16px;
-	    	margin: 4px 2px;
-	    	cursor: pointer;
-	    	border-radius: 4px;
-	}
-	.colors2 { background-color: #986928;}
-	.colors3 { background-color: #ffcf33;}
-	.colors4 { background-color: #659b41;}
-	.tools { border: none;
-	  		 cursor: pointer;
-	  		 background-color: #00000;
-	  		 font-family: "Comic Sans MS", cursive, sans-serif;
-	}
-	.size {
-			border: none;
-	  		cursor: pointer;
-	  		background-color: #00000;
-	  		font-family: "Comic Sans MS", cursive, sans-serif;
-	}
-	.drawing{
-			border: none;
-	  		cursor: pointer;
-	  		background-color: #00000;
-	  		font-family: "Comic Sans MS", cursive, sans-serif;
-	}
-	.leftdiv{
-		padding-left: 100px !important;
-	}
-	canvas{
-		margin-top: 200px;
-	}
-  </style>
+  	<head>
+  	<!-- Page size for this specific tablet -->
+  	<meta name="viewport" content="width=1280, user-scalable=no" />
+  	<style>
+	   	.menu {
+	  			padding-top: 50px;
+	  	}
+	  	.colors {
+	  			background-color: #cb3594;
+		    	border: none;
+		    	color: white;
+		    	padding: 10px;
+		    	font-size: 16px;
+		    	margin: 4px 2px;
+		    	cursor: pointer;
+		    	border-radius: 4px;
+		}
+		.colors2 { background-color: #986928;}
+		.colors3 { background-color: #ffcf33;}
+		.colors4 { background-color: #659b41;}
+		.tools { 
+				border: none;
+		  		cursor: pointer;
+		  		background-color: #00000;
+		  		font-family: "Comic Sans MS", cursive, sans-serif;
+		}
+		.size {
+				border: none;
+		  		cursor: pointer;
+		  		background-color: #00000;
+		  		font-family: "Comic Sans MS", cursive, sans-serif;
+		}
+		.drawing {
+				border: none;
+		  		cursor: pointer;
+		  		background-color: #00000;
+		  		font-family: "Comic Sans MS", cursive, sans-serif;
+		}
+		.leftdiv {
+				padding-left: 100px !important;
+		}
+		canvas {
+				margin-top: 200px;
+		}
+  	</style>
     <title>Let's Draw!</title>
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.js"></script>
-    <!--[if IE]><script type="text/javascript" src="excanvas.js"></script><![endif]-->
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.js"></script>
     <script type="text/javascript" src="letsdraw.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
-  </head>
-  <div class="row">
-  <div class="col-6 leftdiv">
-  	<div>
-  		<button type="button" class="btn btn-link" onclick="clearCanvas()">Clear</button>
-  	</div>
-	<div class="card border-primary mb-3" style="max-width: 20rem;">
-		<center>
-	  		<div class="card-header">Colors</div>
-	  		<div class="card-body">
-	    		<button class="colors" id="purple"></button>
-				<button class="colors colors2" id="brown"></button>
-				<button class="colors colors3" id="yellow"></button>
-				<button class="colors colors4" id="green"></button>
-	  		</div>
-  		</center>
-	</div>
-	<div class="card border-primary mb-3" style="max-width: 20rem;">
-  		<center>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+  	</head>
+  	<div class="row">
+  		<!-- Left column containing all the tools -->
+  		<div class="col-6 leftdiv">
+  			<div>
+  				<button type="button" class="btn btn-link" onclick="clearCanvas()">Clear</button>
+  			</div>
+			<div class="card border-primary mb-3" style="max-width: 20rem;">
+			<center>
+	  			<div class="card-header">Colors</div>
+	  			<div class="card-body">
+		    		<button class="colors" id="purple"></button>
+					<button class="colors colors2" id="brown"></button>
+					<button class="colors colors3" id="yellow"></button>
+					<button class="colors colors4" id="green"></button>
+	  			</div>
+  			</center>
+			</div>
+		<div class="card border-primary mb-3" style="max-width: 20rem;">
+  			<center>
 	  		<div class="card-header">Tools</div>
 	  		<div class="card-body">
 	    		<div class="btn-group" role="group" aria-label="Basic example">
@@ -81,9 +78,9 @@
   					<button type="button" id="eraser" class="btn btn-secondary">Eraser</button>
 				</div>
 	  		</div>
-	  	</center>
-	</div>
-	<div class="card border-primary mb-3" style="max-width: 20rem;">
+	  		</center>
+		</div>
+		<div class="card border-primary mb-3" style="max-width: 20rem;">
 		<center>
 	  		<div class="card-header">Size</div>
 	  		<div class="card-body">
@@ -95,8 +92,8 @@
 				</div>
 	  		</div>
 	  	</center>
-	</div>
-	<div class="card border-primary mb-3" style="max-width: 20rem;">
+		</div>
+		<div class="card border-primary mb-3" style="max-width: 20rem;">
 		<center>
 	  		<div class="card-header">Other drawings</div>
 	  		<div class="card-body">
@@ -105,13 +102,13 @@
   					<button type="button" onclick="dog()" class="btn btn-secondary">Dog</button>
 			</div>
 	  	</center>
-	</div>
-	</div>
-	<div id="canvasDiv"></div>
-	<script type="text/javascript"> $(document).ready(function() {
+		</div>
+		</div>
+		<!-- Loading the canvas -->
+		<div id="canvasDiv"></div>
+		<script type="text/javascript"> $(document).ready(function() {
 		prepareCanvas();});
-	</script>
-	</div>
-  	
+		</script>
+	</div>	
   </body>
 </html>
