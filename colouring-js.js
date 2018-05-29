@@ -4,7 +4,7 @@ var drawingApp = (function () {
 
 	var canvas,
 		context,
-		canvasWidth = 1000,
+		canvasWidth = 700,
 		canvasHeight = 800,
 		colorPurple = "#cb3594",
 		colorGreen = "#659b41",
@@ -20,7 +20,7 @@ var drawingApp = (function () {
 		curColor = colorPurple,
 		curTool = "crayon",
 		curSize = "normal",
-		drawingAreaX = 250,
+		drawingAreaX = 100,
 		drawingAreaY = 150,
 		drawingAreaWidth = 267*2,
 		drawingAreaHeight = 200*2,
