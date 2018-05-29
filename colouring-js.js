@@ -4,8 +4,8 @@ var drawingApp = (function () {
 
 	var canvas,
 		context,
-		canvasWidth = 490,
-		canvasHeight = 220,
+		canvasWidth = 1000,
+		canvasHeight = 800,
 		colorPurple = "#cb3594",
 		colorGreen = "#659b41",
 		colorYellow = "#ffcf33",
@@ -20,18 +20,29 @@ var drawingApp = (function () {
 		curColor = colorPurple,
 		curTool = "crayon",
 		curSize = "normal",
-		drawingAreaX = 111,
-		drawingAreaY = 11,
-		drawingAreaWidth = 267,
-		drawingAreaHeight = 200,
+		drawingAreaX = 250,
+		drawingAreaY = 150,
+		drawingAreaWidth = 267*2,
+		drawingAreaHeight = 200*2,
 		totalLoadResources = 1,
 		curLoadResNum = 0,
 		outlineImage = new Image(),
 		radius = 0,
+		image = "images/watermelon-duck-outline.png",
 
 		// Clears the canvas.
 		clearCanvas = function () {
 			context.clearRect(0, 0, canvasWidth, canvasHeight);
+		},
+
+		clearX = function () {
+			clickX.length = 0;
+		  	clickY.length = 0;
+		  	clickDrag.length = 0;
+		  	clickTool.length = 0;
+		    clickColor.length = 0;
+		    clickSize.length = 0;
+		    redraw();
 		},
 
 		// Redraws the canvas.
@@ -92,6 +103,20 @@ var drawingApp = (function () {
 			clickDrag.push(dragging);
 		},
 
+		dog = function () {
+			if(outlineImage.src != "images/dog.jpg") {
+				clearX();
+				outlineImage.src = "images/dog.jpg";
+			}
+		},
+
+		duck = function () {
+			if(outlineImage.src != "images/watermelon-duck-outline.png") {
+				clearX();
+				outlineImage.src = "images/watermelon-duck-outline.png";
+			}
+		},	
+
 		// Add mouse and touch event listeners to the canvas
 		createUserEvents = function () {
 
@@ -110,6 +135,9 @@ var drawingApp = (function () {
 				document.getElementById('normal').onclick = function() { curSize = "normal"; }
 				document.getElementById('large').onclick = function() { curSize = "large"; }
 				document.getElementById('huge').onclick = function() { curSize = "huge"; }
+				document.getElementById('clear').onclick = function() { clearX(); }
+				document.getElementById('dog').onclick = function() { dog(); }
+				document.getElementById('duck').onclick = function() { duck(); }
 				paint = true;
 				addClick(e.pageX - this.offsetLeft, e.pageY - this.offsetTop, false);
 				redraw();
@@ -178,7 +206,7 @@ var drawingApp = (function () {
 
 			// Load images
 			outlineImage.onload = resourceLoaded;
-			outlineImage.src = "images/watermelon-duck-outline.png";
+			outlineImage.src = image;
 		};
 
 	return {
