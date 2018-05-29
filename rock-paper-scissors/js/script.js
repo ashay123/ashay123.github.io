@@ -6,21 +6,21 @@ var data = {
         currentBg: ""
     },
     moves: [
-        "rock",
-        "paper",
-        "scissors"
+        "steen",
+        "papier",
+        "schaar"
     ],
     resultText: [
         {
-            name: "Win!",
+            name: "Gewonnen!",
             bg: "bg-win"
         },
         {
-            name: "Tie!",
+            name: "Gelijkspel!",
             bg: "bg-tie"
         },
         {
-            name: "Loss!",
+            name: "Verloren!",
             bg: "bg-loss"
         }
     ],
@@ -75,6 +75,10 @@ function displayResult(result) {
     data.stats.currentBg = temp.bg;
 }
 
+/**
+ * Adds the click listener to a given choice
+ * @param choice choice to add the click listener to
+ */
 function addClickListener(choice) {
     var move = data.moves[choice];
     var temp = function () {
@@ -83,6 +87,9 @@ function addClickListener(choice) {
     document.getElementById("button-" + move).addEventListener('click', temp, false);
 }
 
+/**
+ * Adds all click listeners
+ */
 function addClickListeners() {
     for (var i = 0; i < data.moves.length; ++i) {
         addClickListener(i);
@@ -93,6 +100,9 @@ function addClickListeners() {
     });
 }
 
+/**
+ * Initialises the selectors
+ */
 function initialiseSelectors() {
     data.selectors.computerChoice = document.getElementById("computer-choice");
     data.selectors.overlay = document.getElementById("overlay");
