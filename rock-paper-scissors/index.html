@@ -5,7 +5,7 @@
 
     <meta name="viewport" content="width=1200" user-scalable="no">
 
-    <title>Rock Paper Scissors</title>
+    <title>Steen Papier Schaar</title>
 
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="css/style.css">
@@ -17,26 +17,26 @@
 <div class="container-fluid">
     <div class="row status-wrapper text-white">
         <div class="col bg-success d-flex align-items-center justify-content-between">
-            <span>Wins: </span>
+            <span>Gewonnen: </span>
             <strong id="wins-wrapper">0</strong>
         </div>
         <div class="col bg-secondary d-flex align-items-center justify-content-between">
-            <span>Ties: </span>
+            <span>Gelijkspel: </span>
             <strong id="ties-wrapper">0</strong>
         </div>
         <div class="col bg-danger d-flex align-items-center justify-content-between">
-            <span>Losses: </span>
+            <span>Verloren: </span>
             <strong id="losses-wrapper">0</strong>
         </div>
     </div>
     <div class="row align-items-center header-wrapper justify-content-center">
-        <h1 class="col-12 text-center">Make a choice</h1>
+        <h1 class="col-12 text-center">Maak een keuze</h1>
     </div>
     <div class="row">
         <div class="col">
-            <div class="card" id="button-rock">
+            <div class="card" id="button-steen">
                 <div class="card-body text-center d-flex flex-column justify-content-center">
-                    <h2 class="mb-auto">Rock</h2>
+                    <h2 class="mb-auto">Steen</h2>
                     <div class="img-wrapper mb-auto">
                         <img src="img/rock.png" class="img-fluid">
                     </div>
@@ -44,9 +44,9 @@
             </div>
         </div>
         <div class="col">
-            <div class="card" id="button-paper">
+            <div class="card" id="button-papier">
                 <div class="card-body text-center d-flex flex-column justify-content-center">
-                    <h2 class="mb-auto">Paper</h2>
+                    <h2 class="mb-auto">Papier</h2>
                     <div class="img-wrapper mb-auto">
                         <img src="img/paper.png" class="img-fluid">
                     </div>
@@ -54,9 +54,9 @@
             </div>
         </div>
         <div class="col">
-            <div class="card" id="button-scissors">
+            <div class="card" id="button-schaar">
                 <div class="card-body text-center d-flex flex-column justify-content-center">
-                    <h2 class="mb-auto">Scissors</h2>
+                    <h2 class="mb-auto">Schaar</h2>
                     <div class="img-wrapper mb-auto">
                         <img src="img/scissors.png" class="img-fluid">
                     </div>
@@ -66,8 +66,8 @@
     </div>
     <div id="overlay" class="d-flex flex-column justify-content-center align-items-center text-white invisible">
         <h1 id="overlay-text" class="m-5"></h1>
-        <h2>The computer has chosen: <strong id="computer-choice"></strong>.</h2>
-        <h2>Click to play again!</h2>
+        <h2>De computer heeft: <strong id="computer-choice"></strong> gekozen.</h2>
+        <h2>Klik om opnieuw te spelen!</h2>
     </div>
 </div>
 </body>
