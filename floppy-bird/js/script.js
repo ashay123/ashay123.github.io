@@ -1,3 +1,6 @@
+/**
+ * Data object
+ */
 var data = {
     states: Object.freeze({
         SplashScreen: 0,
@@ -15,20 +18,12 @@ var data = {
     flyAreaHeight: 420,
     score: 0,
     highscore: 0,
-    pipeHeight: 90,
+    pipeHeight: 150,
     pipeWidth: 52,
     pipepadding: 80,
     pipes: [],
 
     replayclickable: false,
-
-    //sounds
-    volume: 30,
-    soundJump: new buzz.sound("assets/sounds/sfx_wing.ogg"),
-    soundScore: new buzz.sound("assets/sounds/sfx_point.ogg"),
-    soundHit: new buzz.sound("assets/sounds/sfx_hit.ogg"),
-    soundDie: new buzz.sound("assets/sounds/sfx_die.ogg"),
-    soundSwoosh: new buzz.sound("assets/sounds/sfx_swooshing.ogg"),
 
     //loops
     loopGameloop: undefined,
@@ -46,13 +41,18 @@ var data = {
     scoreboard: undefined
 };
 
+/**
+ * Initialises the game upon starting
+ */
 document.addEventListener('DOMContentLoaded', function () {
-    buzz.all().setVolume(data.volume);
     initialiseSelectors();
     initialiseListeners();
     showSplash();
 });
 
+/**
+ * Initialises the selectors
+ */
 function initialiseSelectors() {
     data.splash = document.getElementById("splash");
     data.player = document.getElementById("player");
@@ -65,6 +65,9 @@ function initialiseSelectors() {
     data.scoreboard = document.getElementById("scoreboard");
 }
 
+/**
+ * Initialises the listeners
+ */
 function initialiseListeners() {
     document.getElementById("gamecontainer").addEventListener("click", screenClick);
     data.replay.addEventListener("click", function () {
@@ -74,15 +77,15 @@ function initialiseListeners() {
         else
             data.replayclickable = false;
 
-        data.soundSwoosh.stop();
-        data.soundSwoosh.play();
-
         data.scoreboard.style.opacity = '0';
         data.scoreboard.style.display = 'none';
         showSplash();
     });
 }
 
+/**
+ * Shows the splash screen
+ */
 function showSplash() {
     data.currentstate = data.states.SplashScreen;
 
@@ -96,9 +99,6 @@ function showSplash() {
     data.player.style.right = '0';
     data.player.style.top = '0';
     updatePlayer(data.player);
-
-    data.soundSwoosh.stop();
-    data.soundSwoosh.play();
 
     //clear out all the pipes if there are any
     loopHTMLCollection(data.pipes, function (item) {
@@ -116,6 +116,9 @@ function showSplash() {
     data.splash.style.opacity = '1';
 }
 
+/**
+ * Starts the game
+ */
 function startGame() {
     data.currentstate = data.states.GameScreen;
 
@@ -134,6 +137,9 @@ function startGame() {
     playerJump();
 }
 
+/**
+ * Updates the player rotation and position
+ */
 function updatePlayer(player) {
     //rotation
     data.rotation = Math.min((data.velocity / 10) * 90, 90);
@@ -143,6 +149,13 @@ function updatePlayer(player) {
     player.style.top = data.position + "px";
 }
 
+/**
+ * BoxDimensions class
+ * @param origWidth width of the origin
+ * @param origHeight height of the origin
+ * @param box bounding box of the player
+ * @constructor
+ */
 function BoxDimensions(origWidth, origHeight, box) {
     this.width = origWidth - (Math.sin(Math.abs(data.rotation) / 90) * 8);
     this.height = (origHeight + box.height) / 2;
@@ -152,6 +165,11 @@ function BoxDimensions(origWidth, origHeight, box) {
     this.bottom = this.top + this.height;
 }
 
+/**
+ * Pipe Class
+ * @param nextPipe nextPipe object
+ * @constructor
+ */
 function Pipe(nextPipe) {
     var boundingBox = nextPipe.getBoundingClientRect();
     this.top = boundingBox.top + getHeight(nextPipe);
@@ -160,6 +178,11 @@ function Pipe(nextPipe) {
     this.bottom = this.top + data.pipeHeight;
 }
 
+/**
+ * Loops the game
+ *  - Updates the scores
+ *  - Checks the player position and pipes
+ */
 function gameloop() {
     //update the player speed/position
     data.velocity += data.gravity;
@@ -193,6 +216,9 @@ function gameloop() {
     }
 }
 
+/**
+ * Calls the correct functions upon a screen click
+ */
 function screenClick() {
     if (data.currentstate === data.states.GameScreen) {
         playerJump();
@@ -201,11 +227,11 @@ function screenClick() {
     }
 }
 
+/**
+ * Handles the jump action
+ */
 function playerJump() {
     data.velocity = data.jump;
-    //play jump sound
-    data.soundJump.stop();
-    data.soundJump.play();
 }
 
 /**
@@ -224,6 +250,10 @@ function setScore(type, erase) {
     });
 }
 
+/**
+ * Sets the big score
+ * @param erase boolean whether the old score has to be erased
+ */
 function setBigScore(erase) {
     var type = {
         selector: "big",
@@ -233,6 +263,9 @@ function setBigScore(erase) {
     setScore(type, erase);
 }
 
+/**
+ * Sets the small score
+ */
 function setSmallScore() {
     var type = {
         selector: "current",
@@ -242,6 +275,9 @@ function setSmallScore() {
     setScore(type);
 }
 
+/**
+ * Sets the highscore
+ */
 function setHighScore() {
     var type = {
         selector: "high",
@@ -251,6 +287,10 @@ function setHighScore() {
     setScore(type);
 }
 
+/**
+ * Sets the medal
+ * @return {boolean} if a medal is rewarded
+ */
 function setMedal() {
     data.medal.innerText = '';
 
@@ -272,6 +312,9 @@ function setMedal() {
     return true;
 }
 
+/**
+ * Handles the event if a player is dead
+ */
 function playerDead() {
     //stop animating everything!
     loopHTMLCollection(data.animated, function (item) {
@@ -293,14 +336,12 @@ function playerDead() {
     data.loopGameloop = null;
     data.loopPipeloop = null;
 
-    //play the hit sound (then the dead sound) and then show score
-    data.soundHit.play().bindOnce("ended", function () {
-        data.soundDie.play().bindOnce("ended", function () {
-            showScore();
-        });
-    });
+    showScore();
 }
 
+/**
+ * Shows the score div
+ */
 function showScore() {
     //unhide us
     data.scoreboard.style.display = 'block';
@@ -316,16 +357,8 @@ function showScore() {
     setSmallScore();
     setHighScore();
 
-    //SWOOSH!
-    data.soundSwoosh.stop();
-    data.soundSwoosh.play();
-
     data.replay.style.opacity = '1';
     data.scoreboard.style.opacity = '1';
-
-    //When the animation is done, animate in the replay button and SWOOSH!
-    data.soundSwoosh.stop();
-    data.soundSwoosh.play();
 
     if (setMedal()) {
         data.medal.style.opacity = '1';
@@ -334,14 +367,17 @@ function showScore() {
     data.replayclickable = true;
 }
 
+/**
+ * Updates the player score
+ */
 function playerScore() {
-    data.score += 1;
-    //play score sound
-    data.soundScore.stop();
-    data.soundScore.play();
+    data.score++;
     setBigScore();
 }
 
+/**
+ * Updates all the pipes by removing the old ones and adding a new one
+ */
 function updatePipes() {
     //Do any pipes need removal?
     loopHTMLCollection(document.getElementsByClassName("pipe"), function (item) {
@@ -354,6 +390,12 @@ function updatePipes() {
     data.pipes.push(newpipe);
 }
 
+/**
+ * Creates a single pipe HTML element
+ * @param height given height
+ * @param className given classname
+ * @return {HTMLDivElement} the new pipe div
+ */
 function createPipe(height, className) {
     var pipe = document.createElement("div");
     pipe.style.height = height;
@@ -361,6 +403,10 @@ function createPipe(height, className) {
     return pipe;
 }
 
+/**
+ * Creates both upper and bottom pipes
+ * @return {HTMLDivElement}
+ */
 function createAnimatedPipe() {
     //add a new pipe (top height + bottom height  + pipeHeight == flyAreaHeight) and put it in our tracker
     var constraint = data.flyAreaHeight - data.pipeHeight - (data.pipepadding * 2); //double pipepadding (for top and bottom)
@@ -375,10 +421,21 @@ function createAnimatedPipe() {
     return pipe;
 }
 
+/**
+ * Returns the height of an element
+ * @param element element to get the height of
+ * @return {number} height of the element
+ */
 function getHeight(element) {
     return element.clientHeight;
 }
 
+/**
+ * Creates an img HTML element
+ * @param src source of the image
+ * @param alt alternative text of the image
+ * @return {HTMLImageElement} the new image HTML element
+ */
 function createImage(src, alt) {
     alt = alt || '';
     var image = document.createElement("img");
@@ -387,6 +444,11 @@ function createImage(src, alt) {
     return image;
 }
 
+/**
+ * Loops over a HTML collection
+ * @param collection collection to loop over
+ * @param toExecute function to execute per HTML element
+ */
 function loopHTMLCollection(collection, toExecute) {
     for (var i = 0; i < collection.length; i++) {
         toExecute(collection[i]);
