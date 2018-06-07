@@ -1,7 +1,41 @@
-* {margin: 0; padding: 0; }
+form{
+	text-align: center;
+	margin-top: 15%;
+}
+body{
+	background-color: white;
+}
+.tictac{
+	background-color: white;
+	border-color: white;
+	color: black;
+	font-size: 3em;
+}
 table { border-collapse: collapse; border-spacing: 0; }
-
 #board { padding: 0px; margin: 0 auto; margin-top: 25px; }
 #board tr td { width: 80px; height: 80px; border: 1px solid #1c1c1c; 
-							 font-family: Helvetica; text-align: center; font-size: 30px; }
-#board tr td:hover { background: #e4e4e4; cursor: pointer; }
+               font-family: Helvetica; text-align: center; font-size: 30px; }
+#board tr td:hover { background: white; cursor: pointer; }
+#overlay {
+    position: fixed;
+    display: none;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 2;
+    cursor: pointer;
+}
+
+#text{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    font-size: 50px;
+    color: white;
+    transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+}
