@@ -30,6 +30,7 @@ var draws = 0
 var loses = 0
 var entered = 0
 var played = 1
+var wonornot  = ""
 
 function vari()
 {
@@ -51,19 +52,23 @@ function on(x) {
     {
       wins++;
       document.getElementById("text").innerHTML = "Je wint!";
+      wonornot = "yes";
     }
     if(x == "lose")
     {
       console.log("entered")
       loses++;
       document.getElementById("text").innerHTML = "Je hebt helaas verloren!";
+      wonornot = "no";
     }
     if(x == "draw")
     {
       draws++;
       document.getElementById("text").innerHTML = "Gelijkspel!";
+      wonornot = "draw";
     }
     document.getElementById("overlay").style.display = "block";
+    ALTabletBinding.raiseEvent(wonornot);
   }
 }
 function off() {
