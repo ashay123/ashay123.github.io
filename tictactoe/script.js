@@ -43,7 +43,6 @@ sqr6 = document.tic.sqr6.value
 sqr7 = document.tic.sqr7.value
 sqr8 = document.tic.sqr8.value
 sqr9 = document.tic.sqr9.value
-possible()
 }
 function on(x) {
   if(entered < played)
@@ -594,6 +593,7 @@ function computer()
     AI()
   }
   check2()
+  possible()
 }
 
 function AI()
@@ -654,6 +654,7 @@ function AI()
     sqr4T = 1}, 500);
   }
   check2()
+  possible()
 }
 
 function reset()
