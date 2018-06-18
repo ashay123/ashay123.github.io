@@ -30,7 +30,7 @@ var draws = 0
 var loses = 0
 var entered = 0
 var played = 1
-var wonornot  = ""
+var tabletEvent  = ""
 
 function vari()
 {
@@ -52,23 +52,23 @@ function on(x) {
     {
       wins++;
       document.getElementById("text").innerHTML = "Je wint!";
-      wonornot = "Je wint!";
+      tabletEvent = "tic-tac-toe_win";
     }
     if(x == "lose")
     {
       console.log("entered")
       loses++;
       document.getElementById("text").innerHTML = "Je hebt helaas verloren!";
-      wonornot = "Je hebt helaas verloren!";
+      tabletEvent = "tic-tac-toe_lose"; 
     }
     if(x == "draw")
     {
       draws++;
       document.getElementById("text").innerHTML = "Gelijkspel!";
-      wonornot = "Gelijkspel!";
+      tabletEvent = "tic-tac-toe_draw";
     }
     document.getElementById("overlay").style.display = "block";
-    ALTabletBinding.raiseEvent(wonornot);
+    ALTabletBinding.raiseEvent(tabletEvent);
   }
 }
 function off() {
