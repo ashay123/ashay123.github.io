@@ -52,20 +52,20 @@ function on(x) {
     {
       wins++;
       document.getElementById("text").innerHTML = "Je wint!";
-      wonornot = "yes";
+      wonornot = "Je wint!";
     }
     if(x == "lose")
     {
       console.log("entered")
       loses++;
       document.getElementById("text").innerHTML = "Je hebt helaas verloren!";
-      wonornot = "no";
+      wonornot = "Je hebt helaas verloren!";
     }
     if(x == "draw")
     {
       draws++;
       document.getElementById("text").innerHTML = "Gelijkspel!";
-      wonornot = "draw";
+      wonornot = "Gelijkspel!";
     }
     document.getElementById("overlay").style.display = "block";
     ALTabletBinding.raiseEvent(wonornot);
