@@ -43,6 +43,7 @@ sqr6 = document.tic.sqr6.value
 sqr7 = document.tic.sqr7.value
 sqr8 = document.tic.sqr8.value
 sqr9 = document.tic.sqr9.value
+possible()
 }
 function on(x) {
   if(entered < played)
@@ -331,6 +332,109 @@ function winCheck()
     computer()
   }
   check2()
+}
+function possible()
+{
+  if(sqr1 == " O " && sqr2 == " O " && sqr3T == 0 && turn == 1)
+  {
+    ALTabletBinding.raiseEvent("tic-tac-toe_pos");
+  }
+  else if(sqr2 == " O " && sqr3 == " O " && sqr1T == 0 && turn == 1)
+  {
+    ALTabletBinding.raiseEvent("tic-tac-toe_pos");
+  }
+  else if(sqr4 == " O " && sqr5 == " O " && sqr6T == 0 && turn == 1)
+  {
+    ALTabletBinding.raiseEvent("tic-tac-toe_pos");
+  }
+  else if(sqr5 == " O " && sqr6 == " O " && sqr4T == 0 && turn == 1)
+  {
+    ALTabletBinding.raiseEvent("tic-tac-toe_pos");
+  }
+  else if(sqr7 == " O " && sqr8 == " O " && sqr9T == 0 && turn == 1)
+  {
+    ALTabletBinding.raiseEvent("tic-tac-toe_pos");
+  }
+  else if(sqr8 == " O " && sqr9 == " O " && sqr7T == 0 && turn == 1)
+  {
+    ALTabletBinding.raiseEvent("tic-tac-toe_pos");
+  }
+  else if(sqr1 == " O " && sqr5 == " O " && sqr9T == 0 && turn == 1)
+  {
+    ALTabletBinding.raiseEvent("tic-tac-toe_pos");
+  }
+  else if(sqr5 == " O " && sqr9 == " O " && sqr1T == 0 && turn == 1)
+  {
+    ALTabletBinding.raiseEvent("tic-tac-toe_pos");
+  }
+  else if(sqr3 == " O " && sqr5 == " O " && sqr7T == 0 && turn == 1)
+  {
+    ALTabletBinding.raiseEvent("tic-tac-toe_pos");
+  }
+  else if(sqr7 == " O " && sqr5 == " O " && sqr3T == 0 && turn == 1)
+  {
+    ALTabletBinding.raiseEvent("tic-tac-toe_pos");
+  }
+  else if(sqr1 == " O " && sqr3 == " O " && sqr2T == 0 && turn == 1)
+  {
+    ALTabletBinding.raiseEvent("tic-tac-toe_pos");
+  }
+  else if(sqr4 == " O " && sqr6 == " O " && sqr5T == 0 && turn == 1)
+  {
+    ALTabletBinding.raiseEvent("tic-tac-toe_pos");
+  }
+  else if(sqr7 == " O " && sqr9 == " O " && sqr8T == 0 && turn == 1)
+  {
+    ALTabletBinding.raiseEvent("tic-tac-toe_pos");
+  }
+  else if(sqr1 == " O " && sqr7 == " O " && sqr4T == 0 && turn == 1)
+  {
+    ALTabletBinding.raiseEvent("tic-tac-toe_pos");
+  }
+  else if(sqr2 == " O " && sqr8 == " O " && sqr5T == 0 && turn == 1)
+  {
+    ALTabletBinding.raiseEvent("tic-tac-toe_pos");
+  }
+  else if(sqr3 == " O " && sqr9 == " O " && sqr6T == 0 && turn == 1)
+  {
+    ALTabletBinding.raiseEvent("tic-tac-toe_pos");
+  }
+  else if(sqr1 == " O " && sqr5 == " O " && sqr9T == 0 && turn == 1)
+  {
+    ALTabletBinding.raiseEvent("tic-tac-toe_pos");
+  }
+  else if(sqr4 == " O " && sqr7 == " O " && sqr1T == 0 && turn == 1)
+  {
+    ALTabletBinding.raiseEvent("tic-tac-toe_pos");
+  }
+  else if(sqr5 == " O " && sqr8 == " O " && sqr2T == 0 && turn == 1)
+  {
+    ALTabletBinding.raiseEvent("tic-tac-toe_pos");
+  }
+  else if(sqr6 == " O " && sqr9 == " O " && sqr3T == 0 && turn == 1)
+  {
+    ALTabletBinding.raiseEvent("tic-tac-toe_pos");
+  }
+  else if(sqr1 == " O " && sqr4 == " O " && sqr7T == 0 && turn == 1)
+  {
+    ALTabletBinding.raiseEvent("tic-tac-toe_pos");
+  }
+  else if(sqr2 == " O " && sqr5 == " O " && sqr8T == 0 && turn == 1)
+  {
+    ALTabletBinding.raiseEvent("tic-tac-toe_pos");
+  }
+  else if(sqr3 == " O " && sqr6 == " O " && sqr9T == 0 && turn == 1)
+  {
+    ALTabletBinding.raiseEvent("tic-tac-toe_pos");
+  }
+  else if(sqr1 == " O " && sqr9 == " O " && sqr5T == 0 && turn == 1)
+  {
+    ALTabletBinding.raiseEvent("tic-tac-toe_pos");
+  }
+  else if(sqr3 == " O " && sqr7 == " O " && sqr5T == 0 && turn == 1)
+  {
+    ALTabletBinding.raiseEvent("tic-tac-toe_pos");
+  }
 }
 function computer()
 {
