@@ -1,9 +1,17 @@
 .header-wrapper {
-    min-height: 20vh;
+    min-height: 15vh;
+}
+
+.header-wrapper > h1 {
+    font-size: 4rem;
 }
 
 .status-wrapper {
-    min-height: 5vh;
+    min-height: 10vh;
+}
+
+.status-wrapper > div {
+    font-size: 2rem;
 }
 
 .card {
@@ -13,6 +21,11 @@
     -moz-transition: all 0.2s ease;
     -o-transition: all 0.2s ease;
     transition: all 0.2s ease;
+}
+
+.card > .card-body > h2 {
+    font-size: 3.5rem;
+    letter-spacing: 2px;
 }
 
 .card:hover {

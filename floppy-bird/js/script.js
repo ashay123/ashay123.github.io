@@ -316,6 +316,8 @@ function setMedal() {
  * Handles the event if a player is dead
  */
 function playerDead() {
+    if (typeof ALTabletBinding !== 'undefined') ALTabletBinding.raiseEvent('floppy-bird_dead_' + data.score);
+
     //stop animating everything!
     loopHTMLCollection(data.animated, function (item) {
         item.style["animation-play-state"] = 'paused';

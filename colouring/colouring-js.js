@@ -1,7 +1,11 @@
+/*
+The drawing application
+*/
 var drawingApp = (function () {
 
 	"use strict";
 
+	// All the variables which are used throughout
 	var canvas,
 		context,
 		canvasWidth = 600,
@@ -30,11 +34,16 @@ var drawingApp = (function () {
 		radius = 0,
 		image = "images/watermelon-duck-outline.png",
 
-		// Clears the canvas.
+		/*
+		Function to clear the canvas
+		*/
 		clearCanvas = function () {
 			context.clearRect(0, 0, canvasWidth, canvasHeight);
 		},
 
+		/*
+		Function to clear the arrays
+		*/
 		clearX = function () {
 			clickX.length = 0;
 		  	clickY.length = 0;
@@ -45,7 +54,9 @@ var drawingApp = (function () {
 		    redraw();
 		},
 
-		// Redraws the canvas.
+		/*
+		Function to redraw the canvas
+		*/
 		redraw = function () {
 			clearCanvas();
 			for(var i=0; i < clickX.length; i++) {
@@ -69,10 +80,8 @@ var drawingApp = (function () {
 		     	context.lineTo(clickX[i], clickY[i]);
 		     	context.closePath();
 		     	if(clickTool[i] == "eraser"){
-					//context.globalCompositeOperation = "destination-out"; // To erase instead of draw over with white
 					context.strokeStyle = 'white';
 				}else if(clickTool[i] == "marker"){
-					//context.globalCompositeOperation = "source-over";	// To erase instead of draw over with white
 					context.globalAlpha = 1;
 					context.strokeStyle = clickColor[i];
 				}else{
@@ -89,10 +98,9 @@ var drawingApp = (function () {
 	  		context.drawImage(outlineImage, drawingAreaX, drawingAreaY, drawingAreaWidth, drawingAreaHeight);
 		},
 
-		// Adds a point to the drawing array.
-		// @param x
-		// @param y
-		// @param dragging
+		/*
+		Adds a point to the arrays
+		*/
 		addClick = function (x, y, dragging) {
 
 			clickX.push(x);
@@ -103,6 +111,9 @@ var drawingApp = (function () {
 			clickDrag.push(dragging);
 		},
 
+		/*
+		Function to get the dog image
+		*/
 		dog = function () {
 			if(outlineImage.src != "images/dog.jpg") {
 				clearX();
@@ -110,6 +121,9 @@ var drawingApp = (function () {
 			}
 		},
 
+		/*
+		Function to get the duck image
+		*/
 		duck = function () {
 			if(outlineImage.src != "images/watermelon-duck-outline.png") {
 				clearX();
@@ -117,9 +131,14 @@ var drawingApp = (function () {
 			}
 		},	
 
-		// Add mouse and touch event listeners to the canvas
+		/*
+		Add mouse and touch event listeners to the canvas
+		*/
 		createUserEvents = function () {
 
+			/*
+			Events for clicks
+			*/
 			var press = function (e) {
 				// Mouse down location
 				var mouseX = e.pageX - this.offsetLeft;
@@ -143,6 +162,9 @@ var drawingApp = (function () {
 				redraw();
 			},
 
+			/*
+			Events for dragging
+			*/
 			drag = function (e) {
 				
 				var mouseX = (e.changedTouches ? e.changedTouches[0].pageX : e.pageX) - this.offsetLeft,
@@ -156,11 +178,17 @@ var drawingApp = (function () {
 				e.preventDefault();
 			},
 
+			/*
+			Events for mouserelease
+			*/
 			release = function () {
 				paint = false;
 				redraw();
 			},
 
+			/*
+			Events for when mouse leaves the canvas
+			*/
 			cancel = function () {
 				paint = false;
 			};
@@ -178,7 +206,9 @@ var drawingApp = (function () {
 			canvas.addEventListener("touchcancel", cancel, false);
 		},
 
-		// Calls the redraw function after all neccessary resources are loaded.
+		/*
+		Calls the redraw function after all neccessary resources are loaded.
+		*/
 		resourceLoaded = function () {
 
 			curLoadResNum += 1;
@@ -188,7 +218,9 @@ var drawingApp = (function () {
 			}
 		},
 
-		// Creates a canvas element, loads images, adds events, and draws the canvas for the first time.
+		/*
+		Creates a canvas element, loads images, adds events, and draws the canvas for the first time.
+		*/
 		init = function () {
 
 			// Create the canvas (Neccessary for IE because it doesn't know what a canvas element is)
@@ -201,10 +233,6 @@ var drawingApp = (function () {
 				canvas = G_vmlCanvasManager.initElement(canvas);
 			}
 			context = canvas.getContext("2d"); // Grab the 2d canvas context
-			// Note: The above code is a workaround for IE 8 and lower. Otherwise we could have used:
-			//     context = document.getElementById('canvas').getContext("2d");
-
-			// Load images
 			outlineImage.onload = resourceLoaded;
 			outlineImage.src = image;
 		};

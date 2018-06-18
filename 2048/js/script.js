@@ -563,9 +563,15 @@ HTMLActuator.prototype.updateScore = function (score) {
 HTMLActuator.prototype.message = function (won) {
     var type = won ? "game-won" : "game-over";
     var message = won ? "You win!" : "Game over!";
+    var binding = won ? "win_" : "lose_";
+
+    var score = document.getElementById("score-container").textContent;
+
+    if (typeof ALTabletBinding !== 'undefined') ALTabletBinding.raiseEvent('2048_' + binding + score);
 
     this.messageContainer.classList.add(type);
     document.getElementById("game-message").textContent = message;
+    document.getElementById("score-wrapper").textContent = score;
 };
 
 /**
