@@ -42,15 +42,15 @@ function clickHandler(choice) {
     var computerChoice = Math.floor(Math.random() * 3);
     data.selectors.computerChoice.textContent = data.moves[computerChoice];
     if ((choice - computerChoice + 3) % 3 === 1) {
-        if (typeof ALTabletBinding !== 'undefined') ALTabletBinding.raiseEvent('rock-paper-scissors_win_' + choice);
+        if (typeof ALTabletBinding !== 'undefined') ALTabletBinding.raiseEvent('rock-paper-scissors_win_' + choice + "_" + computerChoice);
         ++data.stats.wins;
         displayResult(0);
     } else if (choice === computerChoice) {
-        if (typeof ALTabletBinding !== 'undefined') ALTabletBinding.raiseEvent('rock-paper-scissors_tie_' + choice);
+        if (typeof ALTabletBinding !== 'undefined') ALTabletBinding.raiseEvent('rock-paper-scissors_tie_' + choice + "_" + computerChoice);
         ++data.stats.ties;
         displayResult(1);
     } else {
-        if (typeof ALTabletBinding !== 'undefined') ALTabletBinding.raiseEvent('rock-paper-scissors_lose_' + choice);
+        if (typeof ALTabletBinding !== 'undefined') ALTabletBinding.raiseEvent('rock-paper-scissors_lose_' + choice + "_" + computerChoice);
         ++data.stats.losses;
         displayResult(2);
     }
