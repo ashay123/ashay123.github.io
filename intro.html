@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+    <title>Privacy Task</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="intro.css">
+    <body>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-11">
+                    <h3>Take a look at the following image:</h3>
+                    <div id="origimage"></div>
+                </div>
+                <div class="col-sm-1">
+                    <button id="myBtn">Open Instructions</button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <h3>1. Does the image contain private information, according to the definition of the GDPR?</h3>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="pi" id="pi" value="Yes">
+                        <label class="form-check-label" for="inlineRadio1">Yes</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="pi" id="pi" value="No">
+                        <label class="form-check-label" for="inlineRadio2">No</label>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <h3>2. Draw boxes around the elements and attach a label.</h3>
+                    <canvas id="canvas" width="256" height="256"></canvas>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <h3>3. With what information selected in the previous question can we identify a person? (Multiple options possible)</h3>
+                    <div class="form-check" id="ul">
+
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <h3>4. If one or more is selected, is the image still privacy-sensitive when this information is left out?</h3>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="stillpi" id="stillpi" value="Yes">
+                        <label class="form-check-label" for="inlineRadio1">Yes</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="stillpi" id="stillpi" value="No">
+                        <label class="form-check-label" for="inlineRadio2">No</label>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <h3>5. If there are any remarks, write it below:</h3>
+                    <input type="text" id="explanation" name="explanation" required>
+                </div>
+            </div>
+            <div class="row">
+                <button onclick="submit()">Submit</button>
+            </div>
+        </div>
+        <div id="myModal" class="modal">
+            <!-- Modal content -->
+            <div class="modal-content">
+                <p>Select a label:</p>
+                <div class="custom-select" style="width:200px;">
+                    <select id="ddmenu">
+                      <option value="0">Select label:</option>
+                    </select>
+                </div>
+                <div><button onclick="selectLabel()">OK</button>
+                </div>
+                <div><button onclick="cancelLabel()">Cancel</button>
+                </div>
+            </div>
+        </div>
+        <div id="instruction" class="modal">
+            <!-- Modal content -->
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <h3>Definition of Privacy according to the GDPR</h3>
+                        <p>Personal data are any information which are related to an identified or identifiable natural person.</p>
+                        <p>The data subjects are identifiable if they can be directly or indirectly identified, especially by reference to an identifier such as a name, an identification number, location data, an online identifier or one of several special characteristics, which expresses the physical, physiological, genetic, mental, commercial, cultural or social identity of these natural persons. In practice, these also include all data which are or can be assigned to a person in any kind of way. For example, the telephone, credit card or personnel number of a person, account data, number plate, appearance, customer number or address are all personal data.</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <h3>Example elements with the corresponding labels:</h3>
+                    </div>
+                    <div>
+                        <img src="images/labelexamples1.png">
+                    </div>
+                    <div class="col-sm-4">
+                        <img src="images/labelexamples2-1.png">
+                    </div>
+                    <div class="col-sm-12">
+                        <img src="images/labelexamples2-2.png">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+    <script src="intro.js"></script>
+</html>
