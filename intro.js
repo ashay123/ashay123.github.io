@@ -122,7 +122,7 @@ function submit() {
     console.log(JSON.stringify(data));
 
     (async () => {
-        const rawResponse = await fetch("http://localhost:3001/privacytask", {
+        const rawResponse = await fetch("https://nodejs-server-315509.ew.r.appspot.com/privacytask", {
           method: 'POST',
           mode: 'no-cors',
           headers: {
