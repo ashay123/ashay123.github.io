@@ -1,7 +1,11 @@
+var imgnames = ["2017_99255334.jpg", "2017_93645869.jpg", "2017_95027582.jpg", "2017_98115069.jpg", "2017_51958560.jpg"];
+var imgcount = 0;
+var imgloc = "images/taskimages/";
 var img = document.createElement("img");
-img.src = "images/485762_stock-photo-state-id-card.jpg";
-imgname = "485762_stock-photo-state-id-card.jpg";
+imgname = imgnames[imgcount];
+img.src = imgloc+imgname;
 img.id = "test"
+
 var src = document.getElementById("origimage");
 src.appendChild(img);
 var width = img.width;
@@ -15,11 +19,12 @@ var span = document.getElementsByClassName("close")[0];
 var btn = document.getElementById("myBtn");
 var time = 0;
 
+
 window.onload = function() {
     var c = document.getElementById("canvas");
     var ctx = c.getContext("2d");
     var img = document.getElementById("test");
-    c.width = img.width;
+    c.width = 500;
     c.height = img.height;
     ctx.drawImage(img, 0, 0);
     addAttributes();
@@ -86,7 +91,7 @@ function submit() {
     var pi = "";
     var stillpi = "";
     var privAttributes = [];
-    var remarks = "";
+    var remarks = document.getElementsByName("explanation")[0].value;
     var taskLength = Date.now() - time;
     for(i = 0; i < ele.length; i++) {
         if(ele[i].type==="checkbox") {
@@ -103,9 +108,6 @@ function submit() {
                     stillpi = ele[i].value;
                 }
             }
-        }
-        if(ele[i].type==="text") {
-            remarks = ele[i].value;
         }
     }
     var data={
@@ -129,8 +131,26 @@ function submit() {
           body: JSON.stringify(data)
         });
       })();
-
-    // location.replace("end.html");
+    ++imgcount;
+    if(imgcount < 5){
+        imgname = imgnames[imgcount];
+        img.src = imgloc+imgname;
+        boundingBoxes = [];
+        var ul = document.getElementById('ul'); //ul
+        while(ul.firstChild) ul.removeChild(ul.lastChild);
+        var ele = document.getElementsByClassName("form-check-input");
+        for(var i=0;i<ele.length;i++){
+            ele[i].checked = false;
+        }
+        resetcanvas();
+        // document.getElementById("canvas").height=im.height;
+        // canvas2.replaceWith(img);
+        time = Date.now();
+        scroll(0,0)
+        document.getElementsByName("explanation")[0].value = "";
+    } else {
+        location.replace("end.html");
+    } 
 }
 
 function selectLabel() {
