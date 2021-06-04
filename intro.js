@@ -24,11 +24,12 @@ window.onload = function() {
     var c = document.getElementById("canvas");
     var ctx = c.getContext("2d");
     var img = document.getElementById("test");
-    c.width = 500;
+    c.width = 533;
     c.height = img.height;
     ctx.drawImage(img, 0, 0);
     addAttributes();
     time = Date.now();
+    document.getElementById("imageno").innerHTML = "Image "+ (imgcount+1) + " of " + imgnames.length;
 }
 
 span.onclick = function() {
@@ -93,6 +94,8 @@ function submit() {
     var privAttributes = [];
     var remarks = document.getElementsByName("explanation")[0].value;
     var taskLength = Date.now() - time;
+    var piselected = 0;
+    var stillpi = false;
     for(i = 0; i < ele.length; i++) {
         if(ele[i].type==="checkbox") {
             if(ele[i].checked) {
@@ -103,12 +106,27 @@ function submit() {
             if(ele[i].checked){
                 if(ele[i].id === "pi") {
                     pi = ele[i].value;
+                    if (pi === "Yes") piselected=1;
+                    if (pi === "No") piselected=2;
                 }
                 if(ele[i].id === "stillpi"){ 
                     stillpi = ele[i].value;
+                    stillpi = true;
                 }
             }
         }
+    }
+    if (piselected ===0){
+        alert("Question 1 is not filled in!");
+        return;
+    }
+    if (piselected===1 && boundingBoxes.length ===0) {
+        alert("Question 2 is not answered!");
+        return;
+    }
+    if (piselected===1 && !stillpi) {
+        alert("Question 4 is not filled in!");
+        return;
     }
     var data={
         "imgname": imgname,
@@ -148,6 +166,8 @@ function submit() {
         time = Date.now();
         scroll(0,0)
         document.getElementsByName("explanation")[0].value = "";
+        document.getElementById("imageno").innerHTML = "Image "+ (imgcount+1) + " of " + imgnames.length;
+        if(imgcount ===4) document.getElementById("submitbutton").innerHTML = "Submit";
     } else {
         location.replace("end.html");
     } 

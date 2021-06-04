@@ -40,3 +40,19 @@ canvas {
     text-decoration: none;
     cursor: pointer;
   }
+
+#imageno {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+#toprow {
+  padding-top: 20px;
+}
+
+#myBtn {
+  color: black;
+    float: right;
+    font-size: 20px;
+    font-weight: bold;
+}
