@@ -4,6 +4,7 @@ var imgloc = "images/taskimages/";
 var img = document.createElement("img");
 imgname = imgnames[imgcount];
 img.src = imgloc+imgname;
+// img.src  = "images/485762_stock-photo-state-id-card.jpg"
 img.id = "test"
 
 var src = document.getElementById("origimage");
@@ -24,7 +25,7 @@ window.onload = function() {
     var c = document.getElementById("canvas");
     var ctx = c.getContext("2d");
     var img = document.getElementById("test");
-    c.width = 533;
+    c.width = img.width;
     c.height = img.height;
     ctx.drawImage(img, 0, 0);
     addAttributes();
@@ -153,6 +154,14 @@ function submit() {
     if(imgcount < 5){
         imgname = imgnames[imgcount];
         img.src = imgloc+imgname;
+        img.onload = function() {
+            var c = document.getElementById("canvas");
+            c.width = img.width;
+            c.height = img.height;
+            var ctx = c.getContext("2d");
+            ctx.drawImage(img,0,0);
+            
+        }
         boundingBoxes = [];
         var ul = document.getElementById('ul'); //ul
         while(ul.firstChild) ul.removeChild(ul.lastChild);
@@ -160,9 +169,7 @@ function submit() {
         for(var i=0;i<ele.length;i++){
             ele[i].checked = false;
         }
-        resetcanvas();
-        // document.getElementById("canvas").height=im.height;
-        // canvas2.replaceWith(img);
+        // resetcanvas();
         time = Date.now();
         scroll(0,0)
         document.getElementsByName("explanation")[0].value = "";
