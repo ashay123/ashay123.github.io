@@ -67,3 +67,7 @@ canvas {
     font-size: 20px;
     font-weight: bold;
 }
+
+#undobtn {
+  float: left;
+}

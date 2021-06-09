@@ -6,6 +6,18 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script>
+        myStorage = window.localStorage;
+        function toTask(){
+            var pid = document.getElementById('PID').value;
+            if (pid === "") {
+                alert("Fill in your Prolific ID!");
+                return;
+            }
+            myStorage.setItem("PID", pid);
+            location.replace("intro.html");
+        }
+    </script>
     <body>
         <div class="container">
             <div class="row">
@@ -45,10 +57,17 @@
                     <img src="images/ezgif.com-gif-maker (2).gif" alt="Loading" title="Loading" />
                 </div>
             </div>
-            <div class="row">
-                <ul class="pager">
-                    <li><a href="intro.html">Next</a></li>
-                  </ul>
+            <div class="row"  style="padding-top: 20px;">
+                <div class="col-sm-2">
+                    <p style="font-weight: bold;">Enter your Prolific ID:</p>
+                </div>
+                <div class="col-sm-2">
+                    <input type="text" id="PID"></input>
+                </div>
+                <div class="col-sm-2">
+                    <div><button onclick="toTask()">Next</button>
+                    </div>
+                </div>
             </div>
         </div>
     </body>

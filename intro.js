@@ -19,6 +19,7 @@ var instructions = document.getElementById("instruction");
 var span = document.getElementsByClassName("close")[0];
 var btn = document.getElementById("myBtn");
 var time = 0;
+var pid = "";
 
 
 window.onload = function() {
@@ -32,6 +33,7 @@ window.onload = function() {
     addExamples();
     time = Date.now();
     document.getElementById("imageno").innerHTML = "Image "+ (imgcount+1) + " of " + imgnames.length;
+    pid = window.localStorage.getItem("PID");
 }
 
 span.onclick = function() {
@@ -170,7 +172,8 @@ function submit() {
         "privattr": privAttributes,
         "stillpriv": stillpi,
         "remarks": remarks,
-        "tasktime-ms": taskLength
+        "tasktime-ms": taskLength,
+        "proid": pid
     }
     console.log(JSON.stringify(data));
 
@@ -221,6 +224,8 @@ function selectLabel() {
     var text=option.options[value].text;
     if(value === 0) {
         alert("Select a label!");
+    } else if (text==="Other") {
+
     } else {
         const box = Object.create(annotation);
         box.x = o.x;
@@ -412,6 +417,10 @@ function addAttributes(){
         option.appendChild(document.createTextNode(multiattributes[i]));
         ul.appendChild(option);
     }
+    // var option = document.createElement('option');
+    // option.appendChild(document.createTextNode("other, namely:"));
+    // ul.appendChild(option);
+
 }
 
 function addExamples() {
