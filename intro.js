@@ -114,6 +114,13 @@ function handleMouseUp(e) {
     modal.style.display = "block";
 }
 
+function undo() {
+    boundingBoxes.pop();
+    ul = document.getElementById('ul');
+    ul.removeChild(ul.lastChild);
+    draw();
+}
+
 function submit() {
     console.log(boundingBoxes);
     var ele = document.getElementsByTagName('input');
@@ -200,6 +207,7 @@ function submit() {
         time = Date.now();
         scroll(0,0)
         document.getElementsByName("explanation")[0].value = "";
+        hideElements();
         document.getElementById("imageno").innerHTML = "Image "+ (imgcount+1) + " of " + imgnames.length;
         if(imgcount ===4) document.getElementById("submitbutton").innerHTML = "Submit";
     } else {
