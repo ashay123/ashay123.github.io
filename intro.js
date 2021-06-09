@@ -29,6 +29,7 @@ window.onload = function() {
     c.height = img.height;
     ctx.drawImage(img, 0, 0);
     addAttributes();
+    addExamples();
     time = Date.now();
     document.getElementById("imageno").innerHTML = "Image "+ (imgcount+1) + " of " + imgnames.length;
 }
@@ -65,6 +66,32 @@ let m = {},
 start = {};
 // a boolean 
 let isDrawing = false;
+
+function showElements() { 
+    var q21 = document.getElementById("q2-1");
+    q21.style.display = "block";
+    var q2 = document.getElementById("q2");
+    q2.style.display = "block";
+    var q3 = document.getElementById("q3");
+    q3.style.display = "block";
+    var q4 = document.getElementById("q4");
+    q4.style.display = "block";
+    var q5 = document.getElementById("q5");
+    q5.style.display = "block";
+}
+
+function hideElements() {
+    var q21 = document.getElementById("q2-1");
+    q21.style.display = "none";
+    var q2 = document.getElementById("q2");
+    q2.style.display = "none";
+    var q3 = document.getElementById("q3");
+    q3.style.display = "none";
+    var q4 = document.getElementById("q4");
+    q4.style.display = "none";
+    var q5 = document.getElementById("q5");
+    q5.style.display = "none";
+}
 
 function handleMouseDown(e) {
   start = oMousePos(canvas2, e);
@@ -376,5 +403,25 @@ function addAttributes(){
         option.value = i+1;
         option.appendChild(document.createTextNode(multiattributes[i]));
         ul.appendChild(option);
+    }
+}
+
+function addExamples() {
+    var ul = document.getElementById('list1');
+    for (var i = 0; i < textattributes.length; i++) {
+        var li = document.createElement('li');
+        li.appendChild(document.createTextNode(textattributes[i]));
+        ul.appendChild(li);
+    }
+    for (var i = 0; i < visattributes.length; i++) {
+        var li = document.createElement('li');
+        li.appendChild(document.createTextNode(visattributes[i]));
+        ul.appendChild(li);
+    }
+    var ul2 = document.getElementById('list2');
+    for (var i = 0; i < multiattributes.length; i++) {
+        var li = document.createElement('li');
+        li.appendChild(document.createTextNode(multiattributes[i]));
+        ul2.appendChild(li);
     }
 }

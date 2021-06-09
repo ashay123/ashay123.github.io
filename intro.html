@@ -26,22 +26,37 @@
                 <div class="col-sm-12">
                     <h3>1. Does the image contain personal data, according to the definition of the GDPR?</h3>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="pi" id="pi" value="Yes" required>
+                        <input class="form-check-input" type="radio" name="pi" id="pi" value="Yes" onchange="showElements()" required>
                         <label class="form-check-label" for="inlineRadio1">Yes</label>
                     </div>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="pi" id="pi" value="No">
+                        <input class="form-check-input" type="radio" name="pi" id="pi" value="No" onchange="hideElements()">
                         <label class="form-check-label" for="inlineRadio2">No</label>
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-sm-12">
+            <div class="row" id="q2-1">
+                <div class="col-sm-6">
                     <h3>2. Draw boxes around the elements and attach a label.</h3>
-                    <canvas id="canvas"></canvas>
+                </div>
+                <div class="col-sm-2"></div>
+                <div class="col-sm-4">
+                    <h4 style="text-align: center;">Elements to choose from:</h4>
                 </div>
             </div>
-            <div class="row">
+            <div class="row" id="q2">
+                <div class="col-sm-6">
+                    <canvas id="canvas"></canvas>
+                </div>
+                <div class="col-sm-2"></div>
+                <div class="col-sm-2">
+                    <ul id="list1"></ul>  
+                </div>
+                <div class="col-sm-2">
+                    <ul id="list2"></ul>
+                </div>
+            </div>
+            <div class="row" id="q3">
                 <div class="col-sm-12">
                     <h3>3. With what information selected in the previous question can we identify a person? (Multiple options possible)</h3>
                     <div class="form-check" id="ul">
@@ -49,7 +64,7 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
+            <div class="row" id="q4">
                 <div class="col-sm-12">
                     <h3>4. Is the image still privacy-sensitive when this information is left out?</h3>
                     <div class="form-check form-check-inline">
@@ -62,7 +77,7 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
+            <div class="row" id="q5">
                 <div class="col-sm-12">
                     <h3>5. If there are any remarks, write it below:</h3>
                     <textarea id="explanation" name="explanation" style="width: 400px; height: 150px;" required></textarea>

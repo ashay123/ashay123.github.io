@@ -1,7 +1,18 @@
+li {
+  /* display:inline-block; */
+}
+ul {
+  /* list-style-position: inside; */
+  text-align: left;
+}
 canvas {
     border:1px solid;
 }
 .bolden{font-family:"Arial Black"}
+
+#q2-1, #q2, #q3, #q4, #q5 {
+  display: none;
+}
 
 /* The Modal (background) */
 .modal {
