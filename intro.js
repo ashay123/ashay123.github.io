@@ -20,6 +20,7 @@ var span = document.getElementsByClassName("close")[0];
 var btn = document.getElementById("myBtn");
 var time = 0;
 var pid = "";
+var attentioncheck = false;
 
 
 window.onload = function() {
@@ -379,7 +380,20 @@ var attributes = [
     li.appendChild(checkbox);
     
     li.appendChild(document.createTextNode(label));
+    if (imgcount ===2 && attentioncheck === false) {
+        attentioncheck = true;
+        var attcheckbox = document.createElement('input');
+        attcheckbox.type = "checkbox";
+        attcheckbox.value = "attcheck";
+        checkbox.name = "checkbox-attcheck";
+        li.appendChild(attcheckbox);
+    
+        li.appendChild(document.createTextNode("Check this item"));
+    }
+    
     ul.appendChild(li); 
+
+    
 }
 
 function addAttributes(){
