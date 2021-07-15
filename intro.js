@@ -1,4 +1,4 @@
-var imgnames = ["2017_99255334.jpg", "2017_93645869.jpg", "2017_95027582.jpg", "2017_98115069.jpg", "2017_51958560.jpg"];
+var imgnames = ["2017_99255334.jpg", "2017_93645869.jpg", "2017_95027582.jpg", "2017_98115069.jpg", "2017_51958560.jpg", "2017_99888608.jpg", "2017_33659516.jpg", "2017_98668896.jpg", "2017_94213905.jpg", "2017_71658780.jpg"];
 var imgcount = 0;
 var imgloc = "images/taskimages/";
 var img = document.createElement("img");
@@ -189,7 +189,7 @@ function submit() {
         });
       })();
     ++imgcount;
-    if(imgcount < 5){
+    if(imgcount < imgnames.length){
         imgname = imgnames[imgcount];
         img.src = imgloc+imgname;
         img.onload = function() {
@@ -390,10 +390,7 @@ var attributes = [
     
         li.appendChild(document.createTextNode("Check this item"));
     }
-    
     ul.appendChild(li); 
-
-    
 }
 
 function addAttributes(){
