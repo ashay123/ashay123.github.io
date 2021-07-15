@@ -213,7 +213,7 @@ function submit() {
         document.getElementsByName("explanation")[0].value = "";
         hideElements();
         document.getElementById("imageno").innerHTML = "Image "+ (imgcount+1) + " of " + imgnames.length;
-        if(imgcount ===4) document.getElementById("submitbutton").innerHTML = "Submit";
+        if(imgcount ===9) document.getElementById("submitbutton").innerHTML = "Submit";
     } else {
         location.replace("end.html");
     } 
@@ -388,7 +388,7 @@ var attributes = [
         checkbox.name = "checkbox-attcheck";
         li.appendChild(attcheckbox);
     
-        li.appendChild(document.createTextNode("Check this item"));
+        li.appendChild(document.createTextNode("Please tick this box"));
     }
     ul.appendChild(li); 
 }
