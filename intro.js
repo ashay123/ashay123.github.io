@@ -1,4 +1,4 @@
-var imgnames = ["2017_99255334.jpg", "2017_93645869.jpg", "2017_95027582.jpg", "2017_98115069.jpg", "2017_51958560.jpg", "2017_99888608.jpg", "2017_33659516.jpg", "2017_98668896.jpg", "2017_94213905.jpg", "2017_71658780.jpg"];
+var imgnames = ["2017_52694762.jpg", "2017_76635354.jpg", "2017_78182782.jpg", "2017_80900024.jpg", "2017_83898253.jpg", "2017_92281412.jpg", "2017_92566188.jpg", "2017_92586113.jpg", "2017_96650692.jpg", "2017_96806619.jpg"];
 var imgcount = 0;
 var imgloc = "images/taskimages/";
 var img = document.createElement("img");
@@ -133,7 +133,6 @@ function submit() {
     var remarks = document.getElementsByName("explanation")[0].value;
     var taskLength = Date.now() - time;
     var piselected = 0;
-    var stillpi = false;
     for(i = 0; i < ele.length; i++) {
         if(ele[i].type==="checkbox") {
             if(ele[i].checked) {
@@ -149,7 +148,6 @@ function submit() {
                 }
                 if(ele[i].id === "stillpi"){ 
                     stillpi = ele[i].value;
-                    stillpi = true;
                 }
             }
         }
