@@ -160,7 +160,7 @@ function submit() {
         alert("Question 2 is not answered!");
         return;
     }
-    if (piselected===1 && !stillpi) {
+    if (piselected===1 && stillpi==="") {
         alert("Question 4 is not filled in!");
         return;
     }
